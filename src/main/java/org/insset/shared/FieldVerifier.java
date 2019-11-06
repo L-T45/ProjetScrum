@@ -53,11 +53,16 @@ public class FieldVerifier {
      */
     public static boolean isValidDecimal(Integer nbr) {
         //Implement your code
-        return true;
+        return (nbr > 0 && nbr < 2000);
     }
 
     public static boolean isValidRoman(String nbr) {
-        //Implement your code
+        char[] alphabet = "ABEFGHJKNOPQRSTUWYZ".toCharArray();
+        for (int i = 0; i < alphabet.length; i++) {
+            if (nbr.indexOf(alphabet[i]) != -1) {
+                return false;
+            } 
+        }
         return true;
     }
 
