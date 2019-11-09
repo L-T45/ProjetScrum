@@ -1,5 +1,8 @@
 package org.insset.shared;
 
+import com.google.gwt.i18n.client.DateTimeFormat;
+
+
 /**
  * <p>
  * FieldVerifier validates that the name the user enters is valid.
@@ -68,6 +71,15 @@ public class FieldVerifier {
 
     public static boolean isValidDate(String date) {
         //Implement your code
+        DateTimeFormat myDateTimeFormat = DateTimeFormat.getFormat("dd/MM/yyyy");
+        try {
+            myDateTimeFormat.parseStrict(date);
+        } catch(Exception e) {
+            return false;
+        }
+        
+        String[] splitDate = date.split("/");
+        if (Integer.parseInt(splitDate[2]) > 1999 || splitDate[2].equals("0000")) return false;
         return true;
     }
 }
