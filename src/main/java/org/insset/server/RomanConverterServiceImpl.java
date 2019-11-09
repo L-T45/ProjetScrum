@@ -24,7 +24,7 @@ public class RomanConverterServiceImpl extends RemoteServiceServlet implements
         date = Integer.parseInt(str[0]);
         month = Integer.parseInt(str[1]);
         years = Integer.parseInt(str[2]);
-        return this.convertArabeToRoman(date) + "/" + this.convertArabeToRoman(month) + "/" + this.convertArabeToRoman(years);
+        return convertArabeToRoman(date) + "/" + convertArabeToRoman(month) + "/" + convertArabeToRoman(years);
     }
 
     @Override
@@ -154,51 +154,4 @@ public class RomanConverterServiceImpl extends RemoteServiceServlet implements
         }
         return result;
     }
-    while (nbr >= 500) {
-        s += "D";
-        nbr -= 500;
-    }
-    while (nbr >= 400) {
-        s += "CD";
-        nbr -= 400;
-    }
-    while (nbr >= 100) {
-        s += "C";
-        nbr -= 100;
-    }
-    while (nbr >= 90) {
-        s += "XC";
-        nbr -= 90;
-    }
-    while (nbr >= 50) {
-        s += "L";
-        nbr -= 50;
-    }
-    while (nbr >= 40) {
-        s += "XL";
-        nbr -= 40;
-    }
-    while (nbr >= 10) {
-        s += "X";
-        nbr -= 10;
-    }
-    while (nbr >= 9) {
-        s += "IX";
-        nbr -= 9;
-    }
-    while (nbr >= 5) {
-        s += "V";
-        nbr -= 5;
-    }
-    while (nbr >= 4) {
-        s += "IV";
-        nbr -= 4;
-    }
-    while (nbr >= 1) {
-        s += "I";
-        nbr -= 1;
-    }    
-    return s;
-    }
-
 }

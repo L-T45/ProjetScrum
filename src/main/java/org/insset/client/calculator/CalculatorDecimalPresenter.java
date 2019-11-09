@@ -110,6 +110,13 @@ public class CalculatorDecimalPresenter extends Composite {
                 errorLabelD.setText("");
             }
         });
+        boutonConvertD.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                convertDate();
+            }
+        });
+       
     }
 
     /**
@@ -160,6 +167,27 @@ public class CalculatorDecimalPresenter extends Composite {
                 errorLabelAToR.setText(" ");
                 
                 new DialogBoxInssetPresenter("Convertion Arabe to Roman", valA.getText(), result);
+            }
+        });
+    }
+    
+    private void convertDate() {
+        //Verif
+        if (!FieldVerifier.isValidDate(valD.getText())) {
+            errorLabelAToR.addStyleName("serverResponseLabelError");
+            errorLabelAToR.setText("Format incorect");
+            return;
+        }
+        //call server
+        service.convertDateYears(valD.getText(), new AsyncCallback<String>() {
+            public void onFailure(Throwable caught) {
+                // Show the RPC error message to the user
+//                Window.alert(SERVER_ERROR);
+            }
+
+            public void onSuccess(String result) {
+                errorLabelD.setText(" ");
+                new DialogBoxInssetPresenter("Convertion Date", valD.getText(), result);
             }
         });
     }
